@@ -1,6 +1,5 @@
 pandas
 boto3
-json
 sqlalchemy
 psycopg2
 os
