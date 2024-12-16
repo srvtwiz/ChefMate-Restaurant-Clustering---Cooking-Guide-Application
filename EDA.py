@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the cleaned data
-df = pd.read_csv('C:/Users/srvik/Desktop/github/ChefMate Restaurant Clustering & Cooking Guide Application/converted_csv_data/clean_data.csv')
+df = pd.read_csv('clean_data.csv')
 
 # Basic Information
 print("Dataset Overview:")
