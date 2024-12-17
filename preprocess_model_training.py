@@ -46,6 +46,6 @@ class CuisineClusteringModel:
             ]
             if recommendations.empty:
                 return "No recommendations found for the given input."
-            return recommendations[['name', 'cuisines', 'rating', 'location','average_cost_for_two','currency','city']].head(top_n)
+            return recommendations[['name', 'cuisines', 'rating', 'location','average_cost_for_two','price_range','has_online_delivery','has_table_booking','is_delivering_now','currency','city']].head(top_n)
         except Exception as e:
             return f"Error in recommendations: {str(e)}"

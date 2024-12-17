@@ -1,7 +1,7 @@
 pandas
 boto3
 sqlalchemy
-psycopg2
+psycopg2-binary
 os
 matplotlib
 seaborn

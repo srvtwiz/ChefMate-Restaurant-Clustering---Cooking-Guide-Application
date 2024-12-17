@@ -44,11 +44,30 @@ def restaurant_clustering():
 
     # Recommendations
     st.subheader("Restaurant Recommendations")
+    
     user_input = st.text_input("Enter preferred cuisines (comma-separated):", "Indian, Pizza")
     preferred_cuisines = [c.strip() for c in user_input.split(',')]
     recommendations = model.recommend_restaurants(preferred_cuisines, top_n=100000)
     st.write(f"### Top Restaurants for {', '.join(preferred_cuisines)}")
-    st.write(recommendations)
+     # Filters
+    city = st.selectbox("Select City", sorted(recommendations['city'].unique()), index=0)
+    min_cost, max_cost = st.slider("Filter by Average Cost for Two", 0, 5000, (100, 1500), step=100)
+    min_rating, max_rating = st.slider("Filter by Rating", 0.0, 5.0, (3.5, 5.0), step=0.1)
+    has_online_delivery = st.checkbox("Has Online Delivery")
+
+    # Apply filters
+    filtered_df = recommendations[
+        (recommendations['city'] == city) &
+        (recommendations['average_cost_for_two'] >= min_cost) &
+        (recommendations['average_cost_for_two'] <= max_cost) &
+        (recommendations['rating'] >= min_rating) &
+        (recommendations['rating'] <= max_rating)
+    ]
+
+    if has_online_delivery:
+        filtered_df = filtered_df[filtered_df['has_online_delivery'] == 1]
+        
+    st.write(filtered_df)
 
     # Cluster Visualization
     st.subheader("Cluster Visualization")
