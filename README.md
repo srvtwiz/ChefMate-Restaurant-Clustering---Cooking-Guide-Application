@@ -7,7 +7,9 @@ The **ChefMate** application aims to provide intelligent restaurant clustering, 
 
 ## Project Architecture
 1. **Data Storage**:
+   - pushed raw data to the s3 AWS service and retrived it for the next step
    - Cleaned and preprocessed data is stored as CSV files in the specified directory.
+   - pushed the cleaned and structured data to the RDS AWS service and fetched it for the next step
 
 2. **Clustering and Recommendation**:
    - Data is preprocessed and encoded.
@@ -22,6 +24,24 @@ The **ChefMate** application aims to provide intelligent restaurant clustering, 
 4. **Streamlit Integration**:
    - Provides a user-friendly interface for clustering and chatbot functionalities.
 
+5. **AWS service**:
+   - used s3 for raw data storage
+   - used RDS for the cleaned structured data storage
+   - used EC2 for hosting the model on cloud
+
+6. **Packages Used**:
+   - pandas
+   - boto3
+   - sqlalchemy
+   - psycopg2
+   - os
+   - matplotlib
+   - seaborn
+   - streamlit
+   - scikit-learn
+   - numpy
+   - google-generativeai
+   - python-dotenv
 ---
 
 ## Key Functionalities
@@ -195,4 +215,7 @@ if user_input:
 4. Optimize the backend by moving data to AWS RDS and S3 for scalability.
 
 ---
+## Result
+Created an app for the **Restaurant Recommendation System** using ML clustering with use of K-means clustering and had provided an optimal recommendation for the user based on the input the restaurant are clustered based on the cusinis and also integrated a **AI Chatbot** which acts as only a cooking guide assistant for the user where they can ask about all the cooking related stuff .Also the entire code run on the AWS service where i have used the **S3** for the raw file storage and retrived it from s3 cleraned the data and pushed the cleaned structured data to the **RDS**  ,retrived it for the futher ML training model and hosted it on the **EC2** 
 
+---
